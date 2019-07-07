@@ -1,0 +1,251 @@
+---
+title: "Wrangle Google trend data"
+author: "John Doe"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+# create image folder ----
+if (!file.exists("figs/")) {
+    dir.create("figs/")
+}
+# create data folder ----
+if (!file.exists("data/")) {
+    dir.create("data/")
+}
+knitr::opts_chunk$set(
+    echo = TRUE, # show all code
+    eval = TRUE,
+    message = FALSE, 
+    comment = "#> ",
+    warning = TRUE,
+    tidy = FALSE, # cleaner code printing
+    size = "small",
+    fig.path = "figs/") # smaller code
+knitr::opts_knit$set(
+    width = 78)
+base::options(tibble.print_max = 25,
+              tibble.width = 78)
+```
+
+# Motivation 
+
+This document describes the steps used to wrangle the candidate data.
+
+
+## Packages
+
+The Google search trends are accessible via the [gtrendsR](https://github.com/PMassicotte/gtrendsR) package. This and other packages are in the `00-packages.R` script. We load these packages in the code chunk below. 
+
+```{r 00-packages.R, eval=TRUE}
+fs::dir_tree(".")
+library(gtrendsR)
+library(maps)
+library(ggplot2)
+library(lettercase)
+library(viridis)
+library(pals)
+library(scico)
+library(ggrepel)
+library(tidyverse)
+library(skimr)
+```
+
+## Import data
+
+```{r import-data}
+source("src/01-import.R")
+ls()
+```
+
+
+
+### Some R programming
+
+Your code will always be communicating to at least two audiences: your computer, and your future self. Be nice to both of them!
+
+Things like the pipe `%>%` in R can help with clarity. It takes code written like this:
+
+```r
+outer_function(inner_function(Data_X), Data_Y)
+```
+
+And makes it look like this:
+
+```r
+Data_X %>% # do this 
+   inner_function() %>% # then do this
+   outer_function(Data_Y)
+```
+
+## Wrangle the Wikipedia table
+
+This table needed new names, two rows removed from the top of the table, and a numeric `airtime` variable. 
+
+```{r WikiDemAirTime01}
+# wrangle wikipedia data --------
+WikiDemAirTime01 <- WikiDemAirTime01Raw %>% 
+  magrittr::set_colnames(value = c("candidate", "airtime")) %>% 
+  dplyr::filter(candidate %nin% c("Night one airtime", "Candidate")) %>% 
+  dplyr::mutate(airtime = as.numeric(airtime))
+```
+
+## Wrangle the Google data 
+
+The exported data is a `list`, so the `inerest_over_time` table is converted to a tibble for easier manipulation.
+
+We then make `hits` numeric, and join the two tibbles together. 
+
+```{r}
+# convert Dems2020Group1 to tibble
+Dems2020Group1IOT <- Dems2020Night1Group1$interest_over_time %>% as_tibble()
+# convert Dems2020Group2 to tibble
+Dems2020Group2IOT <- Dems2020Night1Group2$interest_over_time %>% as_tibble()
+
+# create numeric hits 
+Dems2020Group1IOT <- Dems2020Group1IOT %>% 
+  dplyr::mutate(hits = as.numeric(hits)) 
+Dems2020Group2IOT <- Dems2020Group2IOT %>%
+  dplyr::mutate(hits = as.numeric(hits)) 
+
+# bind -----------------------------------------------
+Dems2020Debate01IOT <- bind_rows(Dems2020Group1IOT, 
+          Dems2020Group2IOT,
+          .id = "data") 
+```
+
+### Create gender
+
+This creates the `gender` variable. 
+
+```{r gender}
+Dems2020Debate01IOT <- Dems2020Debate01IOT %>% 
+  dplyr::mutate(gender = case_when(
+    stringr::str_detect(keyword, "Elizabeth Warren") ~ "Women", 
+    stringr::str_detect(keyword, "Amy Klobuchar") ~ "Women",
+    stringr::str_detect(keyword, "Tulsi Gabbard") ~ "Women",
+    TRUE ~ "Men"))
+```
+
+### Distinct rows
+
+This will remove any duplicate rows
+
+```{r distinct}
+Dems2020Debate01IOT <- Dems2020Debate01IOT %>% distinct()
+```
+
+### Join data sources
+
+Now we arrange the Wikipedia data by candidate and add an id column.
+
+```{r arrange-by-candidate}
+WikiDemAirTime01 <- WikiDemAirTime01 %>% dplyr::arrange(desc(candidate))
+# add id
+WikiDemAirTime01 <- WikiDemAirTime01 %>% 
+  mutate(candidate_id = row_number())
+```
+
+Then we create an `candidate_id` column in the interest over time table. 
+
+```{r candidate_id-IOT}
+Dems2020Debate01IOT <- Dems2020Debate01IOT %>% 
+  dplyr::mutate(candidate_id = case_when(
+    stringr::str_detect(string = keyword, pattern = "Warren") ~ 1,
+    stringr::str_detect(string = keyword, pattern = "Ryan") ~ 2,
+    stringr::str_detect(string = keyword, pattern = "Beto") ~ 3,
+    stringr::str_detect(string = keyword, pattern = "Klobuchar") ~ 4,
+    stringr::str_detect(string = keyword, pattern = "Inslee") ~ 5,
+    stringr::str_detect(string = keyword, pattern = "Gabbard") ~ 6,
+    stringr::str_detect(string = keyword, pattern = "Delaney") ~ 7,
+    stringr::str_detect(string = keyword, pattern = "de Blasio") ~ 8,
+    stringr::str_detect(string = keyword, pattern = "Castro") ~ 9,
+    stringr::str_detect(string = keyword, pattern = "Booker") ~ 10)) %>% 
+  dplyr::arrange(desc(candidate_id))
+```
+
+Finally was can join.
+
+```{r Dems2020Debate01IOTAirTime}
+Dems2020Debate01IOTAirTime <- Dems2020Debate01IOT %>% 
+  dplyr::left_join(x = ., 
+                   y = WikiDemAirTime01, 
+                   by = "candidate_id")
+```
+
+
+### Prior approval percent of voters
+
+This is the prior percent approval from the [MorningConsult](https://morningconsult.com/) survey on [fivethirtyeight](https://projects.fivethirtyeight.com/democratic-debate-poll/), but these data are no longer avaiable. 
+
+> To track which candidates are winning over voters, we asked respondents who they would vote for before and after each debate. That lets us measure not only who gained (or lost) support, but also where that support came from (or went to).
+
+```{r prior_vperc}
+# prior_vperc -------------------------------------------------------------
+Dems2020Debate01IOTAirTime <- Dems2020Debate01IOTAirTime %>% 
+  dplyr::mutate(prior_vperc = case_when(
+    stringr::str_detect(keyword, "O’Rourke") ~ "> 1.0% of voters",
+    stringr::str_detect(keyword, "Warren") ~ "> 1.0% of voters",
+    stringr::str_detect(keyword, "Booker") ~ "> 1.0% of voters",
+    
+    stringr::str_detect(keyword, "Klobuchar") ~ "0.5 - 0.9% of voters",
+    stringr::str_detect(keyword, "Castro") ~ "0.5 - 0.9% of voters",
+
+    stringr::str_detect(keyword, "Gabbard") ~ "0.2 - 0.4% of voters",
+    stringr::str_detect(keyword, "Ryan") ~ "0.2 - 0.4% of voters",
+    stringr::str_detect(keyword, "Inslee") ~ "0.2 - 0.4% of voters",
+    stringr::str_detect(keyword, "de Blasio") ~ "0.2 - 0.4% of voters",
+
+    stringr::str_detect(keyword, "Delaney") ~ "0.2% of voters"))
+# display tabyl
+Dems2020Debate01IOTAirTime %>% 
+  dplyr::count(prior_vperc, keyword) %>% 
+  tidyr::spread(prior_vperc, n)
+```
+
+Then turn this into a factor and check the levels. 
+
+```{r prior_vperc_fct}
+# assing labels
+Dems2020Debate01IOT <- Dems2020Debate01IOT %>% 
+  dplyr::mutate(prior_vperc_fct = factor(x = prior_vperc))
+
+Dems2020Debate01IOT <- Dems2020Debate01IOT %>% 
+  dplyr::mutate(prior_vperc_fct = forcats::fct_relevel(.f = prior_vperc_fct,
+                    "> 1.0% of voters",
+                    "0.5 - 0.9% of voters",
+                    "0.2 - 0.4% of voters",
+                    "0.2% of voters"))
+# check
+Dems2020Debate01IOT$prior_vperc_fct %>% levels()
+```
+
+## Create the map data
+
+We have to go back to the original exported list `Dems2020Night1Group1` to get the mapping data put together.  
+
+```{r Dems2020IBR}
+# convert to tibble (another data structure in R)
+Dems2020IBRGroup1 <- tibble::as_tibble(Dems2020Night1Group1$interest_by_region)
+Dems2020IBRGroup2 <- tibble::as_tibble(Dems2020Night1Group2$interest_by_region)
+# bind Dems2020IBRGroup1 Dems2020IBRGroup2 together 
+Dems2020IBR <- bind_rows(Dems2020IBRGroup1, 
+                              Dems2020IBRGroup2, .id = "data")
+```
+
+Next we convert the `region` variable to lowercase and join this to the `statesMap` data from `ggplot2` 
+
+```{r Dems2020IBRMapData}
+# convert the region to lowercase
+Dems2020IBR <- Dems2020IBR %>% 
+  dplyr::mutate(region = stringr::str_to_lower(location))
+# create a data set for the states in the US
+statesMap = ggplot2::map_data("state")
+# now merge the two data sources together
+Dems2020IBRMapData <- Dems2020IBR %>% 
+  dplyr::inner_join(x = .,
+                   y = statesMap, 
+                   by = "region")
+```
+
+Now we have two data sets for visualizations and maps!

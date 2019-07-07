@@ -1,0 +1,278 @@
+---
+title: "Importing Google trend data"
+author: "John Doe"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+# create image folder ----
+if (!file.exists("figs/")) {
+    dir.create("figs/")
+}
+# create data folder ----
+if (!file.exists("data/")) {
+    dir.create("data/")
+}
+knitr::opts_chunk$set(
+    echo = TRUE, # show all code
+    eval = FALSE,
+    message = FALSE, 
+    comment = "#> ",
+    warning = TRUE,
+    tidy = FALSE, # cleaner code printing
+    size = "small",
+    fig.path = "figs/") # smaller code
+knitr::opts_knit$set(
+    width = 78)
+base::options(tibble.print_max = 25,
+              tibble.width = 78)
+```
+
+**Rmarkdown:**
+
+This is an R Markdown format used for publishing markdown documents. When you click the **Knit** button all R code chunks are run and a markdown file (`.md`) suitable for publishing to GitHub is generated.
+
+**Including Code:**
+
+You can include R code in the document to keep track of your work! Below we perform a search for Democratic presidential candidates during the debates in June of 2019.
+
+# Motivation
+
+This document collects Google trend data for the 10 democratic presidential candidates who spoke on the first night of the Democratic presidential debate held in Miami, Florida, on June 26, 2019. 
+
+We will be collecting data from June 25, 2019 until June 27, 2019 to get a gauge of how well (or how bad) each candidate did in terms of gaining interest (as measured by Google search trends).
+
+## Packages
+
+The Google search trends are accessible via the [gtrendsR](https://github.com/PMassicotte/gtrendsR) package. This and other packages are in the `00-packages.R` script. We load these packages in the code chunk below. 
+
+```{r 00-packages.R, eval=TRUE}
+library(gtrendsR)
+library(maps)
+library(ggplot2)
+library(lettercase)
+library(viridis)
+library(pals)
+library(scico)
+library(ggrepel)
+library(tidyverse)
+library(skimr)
+```
+
+## The candidates 
+
+There were ten candidates in the first night of the debates, and ten in the second night. We have created a table with all of them listed alphabetically below.
+
+```{r dem_cand_2020}
+dem_candidates <- c("Amy Klobuchar",
+                "Beto O’Rourke",
+                "Bill de Blasio",
+                "Cory Booker",
+                "Elizabeth Warren",
+                "Jay Inslee",
+                "John Delaney",
+                "Julián Castro",
+                "Tim Ryan",
+                "Tulsi Gabbard")
+writeLines(dem_candidates)
+```
+
+
+We can pass the following search items through the `gtrendsR::gtrends()` function below to download the data into our RStudio environment.
+
+The first night of the Democratic presidential debate was held in Miami, Florida, on June 26, 2019, so we've included the day before (June 25th) and the day of the debate. 
+
+The code below was used to get the Google trend data the day after the debate, **so don't run this again** (it's been placed here just for documentation purposes).
+
+```{r gtrends, eval=FALSE}
+# get group 1 from debate
+gtrendsR::gtrends(keyword = c("Bill de Blasio 2020",
+                               "Cory Booker 2020",
+                               "Julián Castro 2020",
+                               "John Delaney 2020",
+                               "Jay Inslee 2020"), 
+                                    # enter dates
+                                    time = "now 7-d",
+                                    gprop = "web",
+                                    geo = c("US"))
+
+# get group 2 from debate
+gtrendsR::gtrends(keyword = c("Amy Klobuchar 2020",
+                                                "Tulsi Gabbard 2020",
+                                                "Beto O’Rourke 2020",
+                                                "Tim Ryan 2020",
+                                                "Elizabeth Warren 2020"), 
+                                                # enter dates
+                                                time = "now 7-d",
+                                                    gprop = "web",
+                                                    geo = c("US"))
+```
+
+We will import the data using the script below 
+
+```{r 01-import.R, eval=TRUE}
+source("src/01-import.R")
+ls()
+```
+
+
+### Understanding the data structures
+
+What did we just download? We can check this with `utils::str()`
+
+```{r explore-Dems2020Night1Group1, eval=TRUE}
+utils::str(Dems2020Night1Group1)
+utils::str(Dems2020Night1Group2)
+```
+
+We can see this creates two objects, each as a `List of 7`. We'll go ahead and export these into the `data/raw` folder now for safe keeping. 
+
+### A little R programming
+
+Your code will always be communicating to at least two audiences: your computer, and your future self. Be nice to both of them!
+
+Things like the pipe `%>%` in R can help with clarity. It takes code written like this:
+
+```r
+outer_function(inner_function(Data_X), Data_Y)
+```
+
+And makes it look like this:
+
+```r
+Data_X %>% # do this 
+   inner_function() %>% # then do this
+   outer_function(Data_Y)
+```
+
+Convert to tibble. 
+
+```{r Dems2020Night1Group1, message=FALSE, warning=FALSE, eval=TRUE}
+# convert Dems2020Night1Group1 to tibble
+Dems2020Night1Group1IOT <- Dems2020Night1Group1$interest_over_time %>% as_tibble()
+# convert Dems2020Night1Group2 to tibble
+Dems2020Night1Group2IOT <- Dems2020Night1Group2$interest_over_time %>% as_tibble()
+Dems2020Night1Group1IOT %>% glimpse(78)
+Dems2020Night1Group2IOT %>% glimpse(78)
+```
+
+Change the `hits` to numeric (from string)
+
+```{r numeric-hits, message=FALSE, warning=FALSE, eval=TRUE}
+# create numeric hits 
+Dems2020Night1Group1IOT <- Dems2020Night1Group1IOT %>% 
+  dplyr::mutate(hits = as.numeric(hits)) 
+Dems2020Night1Group2IOT <- Dems2020Night1Group2IOT %>%
+  dplyr::mutate(hits = as.numeric(hits)) 
+Dems2020Night1Group1IOT %>% glimpse(78)
+Dems2020Night1Group2IOT %>% glimpse(78)
+```
+
+Bind these together. 
+
+```{r Dems2020Debate01IOT, eval=TRUE}
+# bind
+Dems2020Debate01IOT <- bind_rows(Dems2020Night1Group1IOT, 
+                                 Dems2020Night1Group2IOT,
+                                 .id = "data") 
+```
+
+Check the min and max for the date. 
+
+```{r min-max, eval=TRUE}
+# get min
+min(Dems2020Debate01IOT$date)
+# get max
+max(Dems2020Debate01IOT$date)
+```
+
+This is measuring interest from  `r min(Dems2020Debate01IOT$date)` until `r max(Dems2020Debate01IOT$date)` the next day.
+
+## Wrangle
+
+We will perform a few functions to get these data ready for visualizations.
+
+### Men and Women
+
+Create a `gender` variable for each candidate. 
+
+```{r assign-gender, eval=TRUE}
+Dems2020Debate01IOT <- Dems2020Debate01IOT %>% 
+  dplyr::mutate(gender = case_when(
+    stringr::str_detect(keyword, "Elizabeth Warren") ~ "Women", 
+    stringr::str_detect(keyword, "Amy Klobuchar") ~ "Women",
+    stringr::str_detect(keyword, "Tulsi Gabbard") ~ "Women",
+    TRUE ~ "Men"))
+# get distinct
+Dems2020Debate01IOT <- Dems2020Debate01IOT %>% distinct()
+# check new gender variable 
+Dems2020Debate01IOT %>% 
+  dplyr::count(keyword, gender) %>%
+  tidyr::spread(gender, n)
+```
+
+
+### Priors: Calculate the % of likely Democratic voters 
+
+We'll split the Men into three groups based on the [article updated on JUN. 26, 2019, AT 5:53 PM by fivethirtyeight](https://projects.fivethirtyeight.com/democratic-debate-poll/), "Who likely Democratic voters would vote for if the election were held today."
+
+These data are stored in 
+
+```{r Cand538Fav}
+Cand538Fav %>% count(candidate, before)
+```
+
+
+These groups were: `"> 1.0% of voters"`, `"0.5 - 0.9% of voters"`, `"0.2 - 0.4% of voters"`, and `"0.2 % of voters"`
+
+See the categories below. 
+
+```{r Dems2020Debate01IOT-prior_vperc, eval=TRUE}
+Dems2020Debate01IOT <- Dems2020Debate01IOT %>% 
+  dplyr::mutate(prior_vperc = case_when(
+    # high voters
+    stringr::str_detect(keyword, "O’Rourke") ~ "> 1.0% of voters",
+    stringr::str_detect(keyword, "Warren") ~ "> 1.0% of voters",
+    stringr::str_detect(keyword, "Booker") ~ "> 1.0% of voters",
+    # med voters
+    stringr::str_detect(keyword, "Klobuchar") ~ "0.5 - 0.9% of voters",
+    stringr::str_detect(keyword, "Castro") ~ "0.5 - 0.9% of voters",
+
+    # low voters
+    stringr::str_detect(keyword, "Gabbard") ~ "0.2 - 0.4% of voters",
+    stringr::str_detect(keyword, "Ryan") ~ "0.2 - 0.4% of voters",
+    stringr::str_detect(keyword, "Inslee") ~ "0.2 - 0.4% of voters",
+    stringr::str_detect(keyword, "de Blasio") ~ "0.2 - 0.4% of voters",
+    # very low voters
+    stringr::str_detect(keyword, "Delaney") ~ "0.2% of voters"))
+# verify the new variable
+Dems2020Debate01IOT %>% 
+  dplyr::count(prior_vperc, keyword) %>%
+  tidyr::spread(prior_vperc, n)
+```
+
+The `prior_vperc` is a character variable, so there is not inherent order to their levels. I will also create a factor variable (and orderd categorical variable) and specify the levels. I can do this below using the `forcats::fct_relevel()` function.
+
+```{r prior_vperc_fct, eval=TRUE}
+# convert to a factor 
+Dems2020Debate01IOT <- Dems2020Debate01IOT %>% 
+  dplyr::mutate(prior_vperc_fct = factor(x = prior_vperc))
+# relevel the factor variable 
+Dems2020Debate01IOT <- Dems2020Debate01IOT %>% 
+  dplyr::mutate(prior_vperc_fct = forcats::fct_relevel(.f = prior_vperc_fct,
+                    "> 1.0% of voters",
+                    "0.5 - 0.9% of voters",
+                    "0.2 - 0.4% of voters",
+                    "0.2% of voters"))
+# check levels of new factor
+Dems2020Debate01IOT$prior_vperc_fct %>% levels()
+```
+
+## Skim of the Google data 
+
+This is a very top level view of the Google trend data.
+
+```{r check-entire-data}
+Dems2020Debate01IOT %>% skimr::skim()
+```
+
