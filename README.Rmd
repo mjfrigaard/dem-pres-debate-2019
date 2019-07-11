@@ -44,7 +44,6 @@ These data come from two sources, Wikipedia and Google trends. We will start be 
 
 ```{r 01-import, message=FALSE, warning=FALSE}
 source("code/01-import.R")
-# ls()
 ```
 
 ## The democratic candidates 
@@ -177,12 +176,12 @@ Dems2020Debate01IOTAirTime %>%
 This shows Booker doing well, Warren getting some searches later in the evening, etc. But we should narrow this down to the 7 day we're interested in (23rd - 29th) and store it in `Dems2020IOTAirTime7day`.
 
 ```{r Dems2020IOTAirTime7day}
-Dems2020IOTAirTime7day <- Dems2020Debate01IOTAirTime %>% dplyr::filter(date >= "2019-06-22" & 
-                                        date <= "2019-06-30")
+Dems2020IOTAirTime7day <- Dems2020Debate01IOTAirTime %>% 
+                                   dplyr::filter(date >= "2019-06-22" & 
+                                                 date < "2019-06-30")
 ```
 
 If we narrow this down to the week of the debates, we see the following:
-
 
 ```{r 7-day-top-3}
 Dems2020IOTAirTime7day %>% 
@@ -200,6 +199,8 @@ Dems2020IOTAirTime7day %>%
 ```
 
 Now we can see Booker is definitely ahead of Warren in terms of hits over time, but what about in terms of `airtime`?
+
+
 
 ```{r middle-candidates}
 Dems2020IOTAirTime7day %>% 

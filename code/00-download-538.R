@@ -46,8 +46,7 @@ Cand538Fav <- tibble::tribble(
           "Michael Bennet",     0.2,               0.3,                0.5,
               "Jay Inslee",     0.5,               0.6,                0.2,
            "Eric Swalwell",     0.2,               0.1,                0.1,
-     "Marianne Williamson",     0.1,                 0,                0.1
-     )
+     "Marianne Williamson",     0.1,                 0,                0.1)
 # export 538 data ----
 write_csv(as.data.frame(Cand538Fav), 
                          paste0("data/raw/538/",

@@ -1,6 +1,7 @@
 #=====================================================================#
-# This is code to create: democratic presidential debate data from twitter
-# Authored by and feedback to:
+# This is code to create: night 1 democratic presidential debate data from 
+# twitter
+# Authored by and feedback to: @mjfrigaard
 # MIT License
 # Version: 1.0
 #=====================================================================#

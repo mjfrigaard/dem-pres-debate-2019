@@ -30,19 +30,23 @@ WikiDemAirTime01Raw <- rvest::html_table(x = dem2020_tables[[7]],
 WikiDemAirTime02Raw <- rvest::html_table(x = dem2020_tables[[8]],
                                   fill = TRUE)
 
-# export ------------------------------------------------------------------
+# WikiDemAirTime01Raw %>% glimpse(78)
+# WikiDemAirTime02Raw %>% glimpse(78)
+
+
 # create raw/wikipedia data folder --------
 if (!file.exists("data/raw/wikipedia/")) {
   dir.create("data/raw/wikipedia/")
 }
 
+# export night 1 -------------------------------------------------------------
 readr::write_csv(as.data.frame(WikiDemAirTime01Raw), path = 
                    paste0(
                      "data/raw/wikipedia/",
                      base::noquote(lubridate::today()),
                      "-WikiDemAirTime01Raw.csv"
                    ))
-
+# export night 2 -------------------------------------------------------------
 readr::write_csv(as.data.frame(WikiDemAirTime02Raw), path = 
                    paste0(
                      "data/raw/wikipedia/",

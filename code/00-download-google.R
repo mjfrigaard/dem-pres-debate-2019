@@ -7,6 +7,14 @@
 # presidential debate.
 #=====================================================================#
 
+
+# packages ----------------------------------------------------------------
+
+library(gtrendsR)
+library(janitor)
+library(tidyverse)
+
+
 # import night 1 Google data -------------------------------------------------
 if (!file.exists("data/raw/google-trends/")) {
   dir.create("data/raw/google-trends/")
@@ -18,9 +26,13 @@ Dems2020Night1Group1 <- gtrendsR::gtrends(keyword = c("Bill de Blasio 2020",
                                                "John Delaney 2020",
                                                "Jay Inslee 2020"), 
                                     # enter dates
-                                    time = "today 1-m",
+                                    time = "2019-06-01 2019-06-30",
                                     gprop = "web",
                                     geo = c("US"))
+
+# verify dates
+# min(Dems2020Night1Group1$interest_over_time$date)
+# max(Dems2020Night1Group1$interest_over_time$date)
 
 # export Dems2020Night1Group1 ----
 readr::write_rds(x = Dems2020Night1Group1, path = paste0(
@@ -35,9 +47,12 @@ Dems2020Night1Group2 <- gtrendsR::gtrends(keyword = c("Amy Klobuchar 2020",
                                                 "Tim Ryan 2020",
                                                 "Elizabeth Warren 2020"), 
                                                 # enter dates
-                                      time = "today 1-m",
+                                      time = "2019-06-01 2019-06-30",
                                       gprop = "web",
                                       geo = c("US"))
+# verify dates
+# min(Dems2020Night1Group2$interest_over_time$date)
+# max(Dems2020Night1Group2$interest_over_time$date)
 
 # export Dems2020Night1Group2 ----
 readr::write_rds(x = Dems2020Night1Group2, path = paste0(
