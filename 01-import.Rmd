@@ -1,5 +1,5 @@
 ---
-title: "Importing Google trend data"
+title: "Importing Google, Twitter, fivethirtyeight, and Wikipedia data"
 author: "John Doe"
 output: github_document
 ---
@@ -38,7 +38,18 @@ You can include R code in the document to keep track of your work! Below we perf
 
 # Motivation
 
-This document collects Google trend data for the 10 democratic presidential candidates who spoke on the first night of the Democratic presidential debate held in Miami, Florida, on June 26, 2019. 
+This document describes how various data sources were downloaded for this project:
+
+- Google trend data from the [`gtrendsR`](https://github.com/PMassicotte/gtrendsR) package for R gives us access to Google search terms and trends. We're going to use this to import data on Google searches for the candidates before and after the night of the debates.
+
+2) The [`rtweet`](https://rtweet.info/) package in R takes a little bit to get set up. Fortunately, we've written a tutorial [here](http://www.storybench.org/get-twitter-data-rtweet-r/) and the package has excellent documentation (see [here](https://rtweet.info/articles/auth.html) and [here](https://rtweet.info/articles/intro.html)).  
+
+3) There are data from voters on how they felt about each candidate going into the debates stored in a Google Sheet [here](http://bit.ly/2YEVASu) that we've accessed using the [`googlesheets`](https://cran.r-project.org/web/packages/googlesheets/vignettes/basic-usage.html) package in R (*you will need to copy this sheet into your Google drive to get this data set*). Another option is to use the [`datapasta`](https://cran.r-project.org/web/packages/datapasta/README.html) package and copy + paste these data into R. 
+
+4) There is a [Wikipedia](https://en.wikipedia.org/wiki/2020_Democratic_Party_presidential_debates_and_forums) page dedicated to the debates. We will be extracting the tables with airtime for candidate using the [`xml2`](https://cran.r-project.org/web/packages/xml2/index.html) and [`rvest`](https://rvest.tidyverse.org/) packages. 
+
+
+The first night of the Democratic presidential debate held in Miami, Florida, on June 26, 2019. 
 
 We will be collecting data from June 25, 2019 until June 27, 2019 to get a gauge of how well (or how bad) each candidate did in terms of gaining interest (as measured by Google search trends).
 

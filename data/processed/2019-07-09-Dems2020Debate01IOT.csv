@@ -1,0 +1,286 @@
+data,date,hits,geo,time,keyword,gprop,category,gender,candidate_id
+1,2019-06-06T00:00:00Z,10,US,today 1-m,Cory Booker 2020,web,0,Men,10
+1,2019-06-07T00:00:00Z,0,US,today 1-m,Cory Booker 2020,web,0,Men,10
+1,2019-06-08T00:00:00Z,8,US,today 1-m,Cory Booker 2020,web,0,Men,10
+1,2019-06-09T00:00:00Z,4,US,today 1-m,Cory Booker 2020,web,0,Men,10
+1,2019-06-10T00:00:00Z,3,US,today 1-m,Cory Booker 2020,web,0,Men,10
+1,2019-06-11T00:00:00Z,12,US,today 1-m,Cory Booker 2020,web,0,Men,10
+1,2019-06-12T00:00:00Z,3,US,today 1-m,Cory Booker 2020,web,0,Men,10
+1,2019-06-13T00:00:00Z,7,US,today 1-m,Cory Booker 2020,web,0,Men,10
+1,2019-06-14T00:00:00Z,7,US,today 1-m,Cory Booker 2020,web,0,Men,10
+1,2019-06-15T00:00:00Z,8,US,today 1-m,Cory Booker 2020,web,0,Men,10
+1,2019-06-16T00:00:00Z,6,US,today 1-m,Cory Booker 2020,web,0,Men,10
+1,2019-06-17T00:00:00Z,7,US,today 1-m,Cory Booker 2020,web,0,Men,10
+1,2019-06-18T00:00:00Z,0,US,today 1-m,Cory Booker 2020,web,0,Men,10
+1,2019-06-19T00:00:00Z,7,US,today 1-m,Cory Booker 2020,web,0,Men,10
+1,2019-06-20T00:00:00Z,10,US,today 1-m,Cory Booker 2020,web,0,Men,10
+1,2019-06-21T00:00:00Z,7,US,today 1-m,Cory Booker 2020,web,0,Men,10
+1,2019-06-22T00:00:00Z,6,US,today 1-m,Cory Booker 2020,web,0,Men,10
+1,2019-06-23T00:00:00Z,14,US,today 1-m,Cory Booker 2020,web,0,Men,10
+1,2019-06-24T00:00:00Z,9,US,today 1-m,Cory Booker 2020,web,0,Men,10
+1,2019-06-25T00:00:00Z,12,US,today 1-m,Cory Booker 2020,web,0,Men,10
+1,2019-06-26T00:00:00Z,10,US,today 1-m,Cory Booker 2020,web,0,Men,10
+1,2019-06-27T00:00:00Z,100,US,today 1-m,Cory Booker 2020,web,0,Men,10
+1,2019-06-28T00:00:00Z,36,US,today 1-m,Cory Booker 2020,web,0,Men,10
+1,2019-06-29T00:00:00Z,18,US,today 1-m,Cory Booker 2020,web,0,Men,10
+1,2019-06-30T00:00:00Z,12,US,today 1-m,Cory Booker 2020,web,0,Men,10
+1,2019-07-01T00:00:00Z,7,US,today 1-m,Cory Booker 2020,web,0,Men,10
+1,2019-07-02T00:00:00Z,20,US,today 1-m,Cory Booker 2020,web,0,Men,10
+1,2019-07-03T00:00:00Z,3,US,today 1-m,Cory Booker 2020,web,0,Men,10
+1,2019-07-04T00:00:00Z,4,US,today 1-m,Cory Booker 2020,web,0,Men,10
+1,2019-06-06T00:00:00Z,0,US,today 1-m,Julián Castro 2020,web,0,Men,9
+1,2019-06-07T00:00:00Z,3,US,today 1-m,Julián Castro 2020,web,0,Men,9
+1,2019-06-08T00:00:00Z,0,US,today 1-m,Julián Castro 2020,web,0,Men,9
+1,2019-06-09T00:00:00Z,0,US,today 1-m,Julián Castro 2020,web,0,Men,9
+1,2019-06-10T00:00:00Z,0,US,today 1-m,Julián Castro 2020,web,0,Men,9
+1,2019-06-11T00:00:00Z,0,US,today 1-m,Julián Castro 2020,web,0,Men,9
+1,2019-06-12T00:00:00Z,0,US,today 1-m,Julián Castro 2020,web,0,Men,9
+1,2019-06-13T00:00:00Z,0,US,today 1-m,Julián Castro 2020,web,0,Men,9
+1,2019-06-14T00:00:00Z,3,US,today 1-m,Julián Castro 2020,web,0,Men,9
+1,2019-06-15T00:00:00Z,0,US,today 1-m,Julián Castro 2020,web,0,Men,9
+1,2019-06-16T00:00:00Z,0,US,today 1-m,Julián Castro 2020,web,0,Men,9
+1,2019-06-17T00:00:00Z,0,US,today 1-m,Julián Castro 2020,web,0,Men,9
+1,2019-06-18T00:00:00Z,0,US,today 1-m,Julián Castro 2020,web,0,Men,9
+1,2019-06-19T00:00:00Z,0,US,today 1-m,Julián Castro 2020,web,0,Men,9
+1,2019-06-20T00:00:00Z,0,US,today 1-m,Julián Castro 2020,web,0,Men,9
+1,2019-06-21T00:00:00Z,0,US,today 1-m,Julián Castro 2020,web,0,Men,9
+1,2019-06-22T00:00:00Z,0,US,today 1-m,Julián Castro 2020,web,0,Men,9
+1,2019-06-23T00:00:00Z,0,US,today 1-m,Julián Castro 2020,web,0,Men,9
+1,2019-06-24T00:00:00Z,0,US,today 1-m,Julián Castro 2020,web,0,Men,9
+1,2019-06-25T00:00:00Z,0,US,today 1-m,Julián Castro 2020,web,0,Men,9
+1,2019-06-26T00:00:00Z,0,US,today 1-m,Julián Castro 2020,web,0,Men,9
+1,2019-06-27T00:00:00Z,3,US,today 1-m,Julián Castro 2020,web,0,Men,9
+1,2019-06-28T00:00:00Z,0,US,today 1-m,Julián Castro 2020,web,0,Men,9
+1,2019-06-29T00:00:00Z,0,US,today 1-m,Julián Castro 2020,web,0,Men,9
+1,2019-06-30T00:00:00Z,0,US,today 1-m,Julián Castro 2020,web,0,Men,9
+1,2019-07-01T00:00:00Z,0,US,today 1-m,Julián Castro 2020,web,0,Men,9
+1,2019-07-02T00:00:00Z,0,US,today 1-m,Julián Castro 2020,web,0,Men,9
+1,2019-07-03T00:00:00Z,0,US,today 1-m,Julián Castro 2020,web,0,Men,9
+1,2019-07-04T00:00:00Z,0,US,today 1-m,Julián Castro 2020,web,0,Men,9
+1,2019-06-06T00:00:00Z,3,US,today 1-m,Bill de Blasio 2020,web,0,Men,8
+1,2019-06-07T00:00:00Z,7,US,today 1-m,Bill de Blasio 2020,web,0,Men,8
+1,2019-06-08T00:00:00Z,0,US,today 1-m,Bill de Blasio 2020,web,0,Men,8
+1,2019-06-09T00:00:00Z,4,US,today 1-m,Bill de Blasio 2020,web,0,Men,8
+1,2019-06-10T00:00:00Z,3,US,today 1-m,Bill de Blasio 2020,web,0,Men,8
+1,2019-06-11T00:00:00Z,0,US,today 1-m,Bill de Blasio 2020,web,0,Men,8
+1,2019-06-12T00:00:00Z,3,US,today 1-m,Bill de Blasio 2020,web,0,Men,8
+1,2019-06-13T00:00:00Z,0,US,today 1-m,Bill de Blasio 2020,web,0,Men,8
+1,2019-06-14T00:00:00Z,7,US,today 1-m,Bill de Blasio 2020,web,0,Men,8
+1,2019-06-15T00:00:00Z,8,US,today 1-m,Bill de Blasio 2020,web,0,Men,8
+1,2019-06-16T00:00:00Z,4,US,today 1-m,Bill de Blasio 2020,web,0,Men,8
+1,2019-06-17T00:00:00Z,3,US,today 1-m,Bill de Blasio 2020,web,0,Men,8
+1,2019-06-18T00:00:00Z,3,US,today 1-m,Bill de Blasio 2020,web,0,Men,8
+1,2019-06-19T00:00:00Z,0,US,today 1-m,Bill de Blasio 2020,web,0,Men,8
+1,2019-06-20T00:00:00Z,3,US,today 1-m,Bill de Blasio 2020,web,0,Men,8
+1,2019-06-21T00:00:00Z,0,US,today 1-m,Bill de Blasio 2020,web,0,Men,8
+1,2019-06-22T00:00:00Z,0,US,today 1-m,Bill de Blasio 2020,web,0,Men,8
+1,2019-06-23T00:00:00Z,4,US,today 1-m,Bill de Blasio 2020,web,0,Men,8
+1,2019-06-24T00:00:00Z,7,US,today 1-m,Bill de Blasio 2020,web,0,Men,8
+1,2019-06-25T00:00:00Z,3,US,today 1-m,Bill de Blasio 2020,web,0,Men,8
+1,2019-06-26T00:00:00Z,3,US,today 1-m,Bill de Blasio 2020,web,0,Men,8
+1,2019-06-27T00:00:00Z,20,US,today 1-m,Bill de Blasio 2020,web,0,Men,8
+1,2019-06-28T00:00:00Z,7,US,today 1-m,Bill de Blasio 2020,web,0,Men,8
+1,2019-06-29T00:00:00Z,8,US,today 1-m,Bill de Blasio 2020,web,0,Men,8
+1,2019-06-30T00:00:00Z,8,US,today 1-m,Bill de Blasio 2020,web,0,Men,8
+1,2019-07-01T00:00:00Z,10,US,today 1-m,Bill de Blasio 2020,web,0,Men,8
+1,2019-07-02T00:00:00Z,3,US,today 1-m,Bill de Blasio 2020,web,0,Men,8
+1,2019-07-03T00:00:00Z,3,US,today 1-m,Bill de Blasio 2020,web,0,Men,8
+1,2019-07-04T00:00:00Z,4,US,today 1-m,Bill de Blasio 2020,web,0,Men,8
+1,2019-06-06T00:00:00Z,3,US,today 1-m,John Delaney 2020,web,0,Men,7
+1,2019-06-07T00:00:00Z,3,US,today 1-m,John Delaney 2020,web,0,Men,7
+1,2019-06-08T00:00:00Z,0,US,today 1-m,John Delaney 2020,web,0,Men,7
+1,2019-06-09T00:00:00Z,0,US,today 1-m,John Delaney 2020,web,0,Men,7
+1,2019-06-10T00:00:00Z,3,US,today 1-m,John Delaney 2020,web,0,Men,7
+1,2019-06-11T00:00:00Z,0,US,today 1-m,John Delaney 2020,web,0,Men,7
+1,2019-06-12T00:00:00Z,3,US,today 1-m,John Delaney 2020,web,0,Men,7
+1,2019-06-13T00:00:00Z,7,US,today 1-m,John Delaney 2020,web,0,Men,7
+1,2019-06-14T00:00:00Z,10,US,today 1-m,John Delaney 2020,web,0,Men,7
+1,2019-06-15T00:00:00Z,10,US,today 1-m,John Delaney 2020,web,0,Men,7
+1,2019-06-16T00:00:00Z,0,US,today 1-m,John Delaney 2020,web,0,Men,7
+1,2019-06-17T00:00:00Z,0,US,today 1-m,John Delaney 2020,web,0,Men,7
+1,2019-06-18T00:00:00Z,3,US,today 1-m,John Delaney 2020,web,0,Men,7
+1,2019-06-19T00:00:00Z,3,US,today 1-m,John Delaney 2020,web,0,Men,7
+1,2019-06-20T00:00:00Z,3,US,today 1-m,John Delaney 2020,web,0,Men,7
+1,2019-06-21T00:00:00Z,0,US,today 1-m,John Delaney 2020,web,0,Men,7
+1,2019-06-22T00:00:00Z,10,US,today 1-m,John Delaney 2020,web,0,Men,7
+1,2019-06-23T00:00:00Z,4,US,today 1-m,John Delaney 2020,web,0,Men,7
+1,2019-06-24T00:00:00Z,3,US,today 1-m,John Delaney 2020,web,0,Men,7
+1,2019-06-25T00:00:00Z,7,US,today 1-m,John Delaney 2020,web,0,Men,7
+1,2019-06-26T00:00:00Z,8,US,today 1-m,John Delaney 2020,web,0,Men,7
+1,2019-06-27T00:00:00Z,42,US,today 1-m,John Delaney 2020,web,0,Men,7
+1,2019-06-28T00:00:00Z,11,US,today 1-m,John Delaney 2020,web,0,Men,7
+1,2019-06-29T00:00:00Z,6,US,today 1-m,John Delaney 2020,web,0,Men,7
+1,2019-06-30T00:00:00Z,6,US,today 1-m,John Delaney 2020,web,0,Men,7
+1,2019-07-01T00:00:00Z,3,US,today 1-m,John Delaney 2020,web,0,Men,7
+1,2019-07-02T00:00:00Z,0,US,today 1-m,John Delaney 2020,web,0,Men,7
+1,2019-07-03T00:00:00Z,7,US,today 1-m,John Delaney 2020,web,0,Men,7
+1,2019-07-04T00:00:00Z,0,US,today 1-m,John Delaney 2020,web,0,Men,7
+2,2019-06-06T00:00:00Z,9,US,today 1-m,Tulsi Gabbard 2020,web,0,Women,6
+2,2019-06-07T00:00:00Z,5,US,today 1-m,Tulsi Gabbard 2020,web,0,Women,6
+2,2019-06-08T00:00:00Z,9,US,today 1-m,Tulsi Gabbard 2020,web,0,Women,6
+2,2019-06-09T00:00:00Z,9,US,today 1-m,Tulsi Gabbard 2020,web,0,Women,6
+2,2019-06-10T00:00:00Z,6,US,today 1-m,Tulsi Gabbard 2020,web,0,Women,6
+2,2019-06-11T00:00:00Z,5,US,today 1-m,Tulsi Gabbard 2020,web,0,Women,6
+2,2019-06-12T00:00:00Z,3,US,today 1-m,Tulsi Gabbard 2020,web,0,Women,6
+2,2019-06-13T00:00:00Z,3,US,today 1-m,Tulsi Gabbard 2020,web,0,Women,6
+2,2019-06-14T00:00:00Z,5,US,today 1-m,Tulsi Gabbard 2020,web,0,Women,6
+2,2019-06-15T00:00:00Z,0,US,today 1-m,Tulsi Gabbard 2020,web,0,Women,6
+2,2019-06-16T00:00:00Z,4,US,today 1-m,Tulsi Gabbard 2020,web,0,Women,6
+2,2019-06-17T00:00:00Z,11,US,today 1-m,Tulsi Gabbard 2020,web,0,Women,6
+2,2019-06-18T00:00:00Z,6,US,today 1-m,Tulsi Gabbard 2020,web,0,Women,6
+2,2019-06-19T00:00:00Z,6,US,today 1-m,Tulsi Gabbard 2020,web,0,Women,6
+2,2019-06-20T00:00:00Z,6,US,today 1-m,Tulsi Gabbard 2020,web,0,Women,6
+2,2019-06-21T00:00:00Z,6,US,today 1-m,Tulsi Gabbard 2020,web,0,Women,6
+2,2019-06-22T00:00:00Z,7,US,today 1-m,Tulsi Gabbard 2020,web,0,Women,6
+2,2019-06-23T00:00:00Z,6,US,today 1-m,Tulsi Gabbard 2020,web,0,Women,6
+2,2019-06-24T00:00:00Z,8,US,today 1-m,Tulsi Gabbard 2020,web,0,Women,6
+2,2019-06-25T00:00:00Z,6,US,today 1-m,Tulsi Gabbard 2020,web,0,Women,6
+2,2019-06-26T00:00:00Z,11,US,today 1-m,Tulsi Gabbard 2020,web,0,Women,6
+2,2019-06-27T00:00:00Z,100,US,today 1-m,Tulsi Gabbard 2020,web,0,Women,6
+2,2019-06-28T00:00:00Z,55,US,today 1-m,Tulsi Gabbard 2020,web,0,Women,6
+2,2019-06-29T00:00:00Z,26,US,today 1-m,Tulsi Gabbard 2020,web,0,Women,6
+2,2019-06-30T00:00:00Z,29,US,today 1-m,Tulsi Gabbard 2020,web,0,Women,6
+2,2019-07-01T00:00:00Z,8,US,today 1-m,Tulsi Gabbard 2020,web,0,Women,6
+2,2019-07-02T00:00:00Z,3,US,today 1-m,Tulsi Gabbard 2020,web,0,Women,6
+2,2019-07-03T00:00:00Z,5,US,today 1-m,Tulsi Gabbard 2020,web,0,Women,6
+1,2019-06-06T00:00:00Z,7,US,today 1-m,Jay Inslee 2020,web,0,Men,5
+1,2019-06-07T00:00:00Z,7,US,today 1-m,Jay Inslee 2020,web,0,Men,5
+1,2019-06-08T00:00:00Z,0,US,today 1-m,Jay Inslee 2020,web,0,Men,5
+1,2019-06-09T00:00:00Z,0,US,today 1-m,Jay Inslee 2020,web,0,Men,5
+1,2019-06-10T00:00:00Z,3,US,today 1-m,Jay Inslee 2020,web,0,Men,5
+1,2019-06-11T00:00:00Z,3,US,today 1-m,Jay Inslee 2020,web,0,Men,5
+1,2019-06-12T00:00:00Z,3,US,today 1-m,Jay Inslee 2020,web,0,Men,5
+1,2019-06-13T00:00:00Z,3,US,today 1-m,Jay Inslee 2020,web,0,Men,5
+1,2019-06-14T00:00:00Z,7,US,today 1-m,Jay Inslee 2020,web,0,Men,5
+1,2019-06-15T00:00:00Z,0,US,today 1-m,Jay Inslee 2020,web,0,Men,5
+1,2019-06-16T00:00:00Z,4,US,today 1-m,Jay Inslee 2020,web,0,Men,5
+1,2019-06-17T00:00:00Z,3,US,today 1-m,Jay Inslee 2020,web,0,Men,5
+1,2019-06-18T00:00:00Z,3,US,today 1-m,Jay Inslee 2020,web,0,Men,5
+1,2019-06-19T00:00:00Z,3,US,today 1-m,Jay Inslee 2020,web,0,Men,5
+1,2019-06-20T00:00:00Z,0,US,today 1-m,Jay Inslee 2020,web,0,Men,5
+1,2019-06-21T00:00:00Z,0,US,today 1-m,Jay Inslee 2020,web,0,Men,5
+1,2019-06-22T00:00:00Z,0,US,today 1-m,Jay Inslee 2020,web,0,Men,5
+1,2019-06-23T00:00:00Z,0,US,today 1-m,Jay Inslee 2020,web,0,Men,5
+1,2019-06-24T00:00:00Z,3,US,today 1-m,Jay Inslee 2020,web,0,Men,5
+1,2019-06-25T00:00:00Z,0,US,today 1-m,Jay Inslee 2020,web,0,Men,5
+1,2019-06-26T00:00:00Z,8,US,today 1-m,Jay Inslee 2020,web,0,Men,5
+1,2019-06-27T00:00:00Z,12,US,today 1-m,Jay Inslee 2020,web,0,Men,5
+1,2019-06-28T00:00:00Z,5,US,today 1-m,Jay Inslee 2020,web,0,Men,5
+1,2019-06-29T00:00:00Z,4,US,today 1-m,Jay Inslee 2020,web,0,Men,5
+1,2019-06-30T00:00:00Z,4,US,today 1-m,Jay Inslee 2020,web,0,Men,5
+1,2019-07-01T00:00:00Z,0,US,today 1-m,Jay Inslee 2020,web,0,Men,5
+1,2019-07-02T00:00:00Z,7,US,today 1-m,Jay Inslee 2020,web,0,Men,5
+1,2019-07-03T00:00:00Z,3,US,today 1-m,Jay Inslee 2020,web,0,Men,5
+1,2019-07-04T00:00:00Z,0,US,today 1-m,Jay Inslee 2020,web,0,Men,5
+2,2019-06-06T00:00:00Z,6,US,today 1-m,Amy Klobuchar 2020,web,0,Women,4
+2,2019-06-07T00:00:00Z,3,US,today 1-m,Amy Klobuchar 2020,web,0,Women,4
+2,2019-06-08T00:00:00Z,0,US,today 1-m,Amy Klobuchar 2020,web,0,Women,4
+2,2019-06-09T00:00:00Z,7,US,today 1-m,Amy Klobuchar 2020,web,0,Women,4
+2,2019-06-10T00:00:00Z,12,US,today 1-m,Amy Klobuchar 2020,web,0,Women,4
+2,2019-06-11T00:00:00Z,3,US,today 1-m,Amy Klobuchar 2020,web,0,Women,4
+2,2019-06-12T00:00:00Z,3,US,today 1-m,Amy Klobuchar 2020,web,0,Women,4
+2,2019-06-13T00:00:00Z,3,US,today 1-m,Amy Klobuchar 2020,web,0,Women,4
+2,2019-06-14T00:00:00Z,3,US,today 1-m,Amy Klobuchar 2020,web,0,Women,4
+2,2019-06-15T00:00:00Z,4,US,today 1-m,Amy Klobuchar 2020,web,0,Women,4
+2,2019-06-16T00:00:00Z,0,US,today 1-m,Amy Klobuchar 2020,web,0,Women,4
+2,2019-06-17T00:00:00Z,3,US,today 1-m,Amy Klobuchar 2020,web,0,Women,4
+2,2019-06-18T00:00:00Z,6,US,today 1-m,Amy Klobuchar 2020,web,0,Women,4
+2,2019-06-19T00:00:00Z,3,US,today 1-m,Amy Klobuchar 2020,web,0,Women,4
+2,2019-06-20T00:00:00Z,3,US,today 1-m,Amy Klobuchar 2020,web,0,Women,4
+2,2019-06-21T00:00:00Z,6,US,today 1-m,Amy Klobuchar 2020,web,0,Women,4
+2,2019-06-22T00:00:00Z,7,US,today 1-m,Amy Klobuchar 2020,web,0,Women,4
+2,2019-06-23T00:00:00Z,8,US,today 1-m,Amy Klobuchar 2020,web,0,Women,4
+2,2019-06-24T00:00:00Z,3,US,today 1-m,Amy Klobuchar 2020,web,0,Women,4
+2,2019-06-25T00:00:00Z,6,US,today 1-m,Amy Klobuchar 2020,web,0,Women,4
+2,2019-06-26T00:00:00Z,8,US,today 1-m,Amy Klobuchar 2020,web,0,Women,4
+2,2019-06-27T00:00:00Z,41,US,today 1-m,Amy Klobuchar 2020,web,0,Women,4
+2,2019-06-28T00:00:00Z,18,US,today 1-m,Amy Klobuchar 2020,web,0,Women,4
+2,2019-06-29T00:00:00Z,7,US,today 1-m,Amy Klobuchar 2020,web,0,Women,4
+2,2019-06-30T00:00:00Z,11,US,today 1-m,Amy Klobuchar 2020,web,0,Women,4
+2,2019-07-01T00:00:00Z,9,US,today 1-m,Amy Klobuchar 2020,web,0,Women,4
+2,2019-07-02T00:00:00Z,8,US,today 1-m,Amy Klobuchar 2020,web,0,Women,4
+2,2019-07-03T00:00:00Z,5,US,today 1-m,Amy Klobuchar 2020,web,0,Women,4
+2,2019-06-06T00:00:00Z,0,US,today 1-m,Beto O’Rourke 2020,web,0,Men,3
+2,2019-06-07T00:00:00Z,0,US,today 1-m,Beto O’Rourke 2020,web,0,Men,3
+2,2019-06-08T00:00:00Z,0,US,today 1-m,Beto O’Rourke 2020,web,0,Men,3
+2,2019-06-09T00:00:00Z,0,US,today 1-m,Beto O’Rourke 2020,web,0,Men,3
+2,2019-06-10T00:00:00Z,0,US,today 1-m,Beto O’Rourke 2020,web,0,Men,3
+2,2019-06-11T00:00:00Z,0,US,today 1-m,Beto O’Rourke 2020,web,0,Men,3
+2,2019-06-12T00:00:00Z,0,US,today 1-m,Beto O’Rourke 2020,web,0,Men,3
+2,2019-06-13T00:00:00Z,0,US,today 1-m,Beto O’Rourke 2020,web,0,Men,3
+2,2019-06-14T00:00:00Z,0,US,today 1-m,Beto O’Rourke 2020,web,0,Men,3
+2,2019-06-15T00:00:00Z,0,US,today 1-m,Beto O’Rourke 2020,web,0,Men,3
+2,2019-06-16T00:00:00Z,0,US,today 1-m,Beto O’Rourke 2020,web,0,Men,3
+2,2019-06-17T00:00:00Z,0,US,today 1-m,Beto O’Rourke 2020,web,0,Men,3
+2,2019-06-18T00:00:00Z,0,US,today 1-m,Beto O’Rourke 2020,web,0,Men,3
+2,2019-06-19T00:00:00Z,0,US,today 1-m,Beto O’Rourke 2020,web,0,Men,3
+2,2019-06-20T00:00:00Z,0,US,today 1-m,Beto O’Rourke 2020,web,0,Men,3
+2,2019-06-21T00:00:00Z,0,US,today 1-m,Beto O’Rourke 2020,web,0,Men,3
+2,2019-06-22T00:00:00Z,0,US,today 1-m,Beto O’Rourke 2020,web,0,Men,3
+2,2019-06-23T00:00:00Z,0,US,today 1-m,Beto O’Rourke 2020,web,0,Men,3
+2,2019-06-24T00:00:00Z,0,US,today 1-m,Beto O’Rourke 2020,web,0,Men,3
+2,2019-06-25T00:00:00Z,0,US,today 1-m,Beto O’Rourke 2020,web,0,Men,3
+2,2019-06-26T00:00:00Z,0,US,today 1-m,Beto O’Rourke 2020,web,0,Men,3
+2,2019-06-27T00:00:00Z,3,US,today 1-m,Beto O’Rourke 2020,web,0,Men,3
+2,2019-06-28T00:00:00Z,0,US,today 1-m,Beto O’Rourke 2020,web,0,Men,3
+2,2019-06-29T00:00:00Z,0,US,today 1-m,Beto O’Rourke 2020,web,0,Men,3
+2,2019-06-30T00:00:00Z,0,US,today 1-m,Beto O’Rourke 2020,web,0,Men,3
+2,2019-07-01T00:00:00Z,0,US,today 1-m,Beto O’Rourke 2020,web,0,Men,3
+2,2019-07-02T00:00:00Z,0,US,today 1-m,Beto O’Rourke 2020,web,0,Men,3
+2,2019-07-03T00:00:00Z,0,US,today 1-m,Beto O’Rourke 2020,web,0,Men,3
+2,2019-06-06T00:00:00Z,3,US,today 1-m,Tim Ryan 2020,web,0,Men,2
+2,2019-06-07T00:00:00Z,3,US,today 1-m,Tim Ryan 2020,web,0,Men,2
+2,2019-06-08T00:00:00Z,0,US,today 1-m,Tim Ryan 2020,web,0,Men,2
+2,2019-06-09T00:00:00Z,0,US,today 1-m,Tim Ryan 2020,web,0,Men,2
+2,2019-06-10T00:00:00Z,3,US,today 1-m,Tim Ryan 2020,web,0,Men,2
+2,2019-06-11T00:00:00Z,3,US,today 1-m,Tim Ryan 2020,web,0,Men,2
+2,2019-06-12T00:00:00Z,6,US,today 1-m,Tim Ryan 2020,web,0,Men,2
+2,2019-06-13T00:00:00Z,6,US,today 1-m,Tim Ryan 2020,web,0,Men,2
+2,2019-06-14T00:00:00Z,3,US,today 1-m,Tim Ryan 2020,web,0,Men,2
+2,2019-06-15T00:00:00Z,4,US,today 1-m,Tim Ryan 2020,web,0,Men,2
+2,2019-06-16T00:00:00Z,0,US,today 1-m,Tim Ryan 2020,web,0,Men,2
+2,2019-06-17T00:00:00Z,3,US,today 1-m,Tim Ryan 2020,web,0,Men,2
+2,2019-06-18T00:00:00Z,3,US,today 1-m,Tim Ryan 2020,web,0,Men,2
+2,2019-06-19T00:00:00Z,0,US,today 1-m,Tim Ryan 2020,web,0,Men,2
+2,2019-06-20T00:00:00Z,0,US,today 1-m,Tim Ryan 2020,web,0,Men,2
+2,2019-06-21T00:00:00Z,0,US,today 1-m,Tim Ryan 2020,web,0,Men,2
+2,2019-06-22T00:00:00Z,4,US,today 1-m,Tim Ryan 2020,web,0,Men,2
+2,2019-06-23T00:00:00Z,0,US,today 1-m,Tim Ryan 2020,web,0,Men,2
+2,2019-06-24T00:00:00Z,3,US,today 1-m,Tim Ryan 2020,web,0,Men,2
+2,2019-06-25T00:00:00Z,3,US,today 1-m,Tim Ryan 2020,web,0,Men,2
+2,2019-06-26T00:00:00Z,6,US,today 1-m,Tim Ryan 2020,web,0,Men,2
+2,2019-06-27T00:00:00Z,37,US,today 1-m,Tim Ryan 2020,web,0,Men,2
+2,2019-06-28T00:00:00Z,8,US,today 1-m,Tim Ryan 2020,web,0,Men,2
+2,2019-06-29T00:00:00Z,0,US,today 1-m,Tim Ryan 2020,web,0,Men,2
+2,2019-06-30T00:00:00Z,7,US,today 1-m,Tim Ryan 2020,web,0,Men,2
+2,2019-07-01T00:00:00Z,5,US,today 1-m,Tim Ryan 2020,web,0,Men,2
+2,2019-07-02T00:00:00Z,5,US,today 1-m,Tim Ryan 2020,web,0,Men,2
+2,2019-07-03T00:00:00Z,0,US,today 1-m,Tim Ryan 2020,web,0,Men,2
+2,2019-06-06T00:00:00Z,26,US,today 1-m,Elizabeth Warren 2020,web,0,Women,1
+2,2019-06-07T00:00:00Z,16,US,today 1-m,Elizabeth Warren 2020,web,0,Women,1
+2,2019-06-08T00:00:00Z,13,US,today 1-m,Elizabeth Warren 2020,web,0,Women,1
+2,2019-06-09T00:00:00Z,14,US,today 1-m,Elizabeth Warren 2020,web,0,Women,1
+2,2019-06-10T00:00:00Z,20,US,today 1-m,Elizabeth Warren 2020,web,0,Women,1
+2,2019-06-11T00:00:00Z,12,US,today 1-m,Elizabeth Warren 2020,web,0,Women,1
+2,2019-06-12T00:00:00Z,19,US,today 1-m,Elizabeth Warren 2020,web,0,Women,1
+2,2019-06-13T00:00:00Z,12,US,today 1-m,Elizabeth Warren 2020,web,0,Women,1
+2,2019-06-14T00:00:00Z,20,US,today 1-m,Elizabeth Warren 2020,web,0,Women,1
+2,2019-06-15T00:00:00Z,16,US,today 1-m,Elizabeth Warren 2020,web,0,Women,1
+2,2019-06-16T00:00:00Z,20,US,today 1-m,Elizabeth Warren 2020,web,0,Women,1
+2,2019-06-17T00:00:00Z,25,US,today 1-m,Elizabeth Warren 2020,web,0,Women,1
+2,2019-06-18T00:00:00Z,15,US,today 1-m,Elizabeth Warren 2020,web,0,Women,1
+2,2019-06-19T00:00:00Z,17,US,today 1-m,Elizabeth Warren 2020,web,0,Women,1
+2,2019-06-20T00:00:00Z,23,US,today 1-m,Elizabeth Warren 2020,web,0,Women,1
+2,2019-06-21T00:00:00Z,9,US,today 1-m,Elizabeth Warren 2020,web,0,Women,1
+2,2019-06-22T00:00:00Z,20,US,today 1-m,Elizabeth Warren 2020,web,0,Women,1
+2,2019-06-23T00:00:00Z,35,US,today 1-m,Elizabeth Warren 2020,web,0,Women,1
+2,2019-06-24T00:00:00Z,20,US,today 1-m,Elizabeth Warren 2020,web,0,Women,1
+2,2019-06-25T00:00:00Z,36,US,today 1-m,Elizabeth Warren 2020,web,0,Women,1
+2,2019-06-26T00:00:00Z,23,US,today 1-m,Elizabeth Warren 2020,web,0,Women,1
+2,2019-06-27T00:00:00Z,91,US,today 1-m,Elizabeth Warren 2020,web,0,Women,1
+2,2019-06-28T00:00:00Z,67,US,today 1-m,Elizabeth Warren 2020,web,0,Women,1
+2,2019-06-29T00:00:00Z,24,US,today 1-m,Elizabeth Warren 2020,web,0,Women,1
+2,2019-06-30T00:00:00Z,24,US,today 1-m,Elizabeth Warren 2020,web,0,Women,1
+2,2019-07-01T00:00:00Z,28,US,today 1-m,Elizabeth Warren 2020,web,0,Women,1
+2,2019-07-02T00:00:00Z,9,US,today 1-m,Elizabeth Warren 2020,web,0,Women,1
+2,2019-07-03T00:00:00Z,8,US,today 1-m,Elizabeth Warren 2020,web,0,Women,1

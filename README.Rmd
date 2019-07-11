@@ -34,7 +34,7 @@ library(rtweet)
 We've been asked to see if there is a relationship between screen time and Google trend searches for candidates in the Democratic presidential debate. This document outlines the data import, wrangling, and visulizations used to complete this project. 
 
 ```{r project-files}
-fs::dir_tree(".", recurse = TRUE)
+fs::dir_tree("data", recurse = TRUE)    
 ```
 
 
@@ -47,20 +47,7 @@ source("code/01-import.R")
 # ls()
 ```
 
-### Wikipedia table
-
-[Wikipedia page on 2020 democratic debates (first night)](https://en.wikipedia.org/wiki/2020_Democratic_Party_presidential_debates_and_forums#Summary). 
-
-The data, `WikiDemAirTime01Raw` are in the work session below. 
-
-```{r WikiDemAirTime01}
-WikiDemAirTime01Raw %>% head(10)
-WikiDemAirTime02Raw %>% head(10)
-```
-
-The url above takes you to a summary of the night. The file below will import and wrangle the data set.  
-
-## The candidates 
+## The democratic candidates 
 
 There were ten candidates in the first night of debates, and all are listed alphabetically below. 
 
@@ -77,6 +64,18 @@ dem_candidates <- c("Amy Klobuchar",
                 "Tulsi Gabbard")
 writeLines(dem_candidates)
 ```
+
+### The Wikipedia table
+
+[Wikipedia page on 2020 democratic debates (first night)](https://en.wikipedia.org/wiki/2020_Democratic_Party_presidential_debates_and_forums#Summary). 
+
+The data, `WikiDemAirTime01Raw` are in the work session below. 
+
+```{r WikiDemAirTime01}
+WikiDemAirTime01Raw %>% head(10)
+WikiDemAirTime02Raw %>% head(10)
+```
+
 
 ### Google trends data
 
@@ -120,15 +119,12 @@ gtrendsR::gtrends(keyword = c("Amy Klobuchar 2020",
 
 The twitter data for the first night of candidates are below. These data were collected ~1 week after the debates. 
 
-```{r}
-
+```{r ts_plot}
 TwitterData %>%
   ts_plot("3 hours") +
   ggplot2::theme_minimal() +
   ggplot2::theme(plot.title = ggplot2::element_text(face = "bold")) 
 ```
-
-
 
 ## Wrangle data
 
@@ -136,7 +132,6 @@ See the script for more details.
 
 ```{r wrangle, eval=TRUE, message=FALSE, warning=FALSE}
 source("code/02-wrangle.R")
-ls()
 ```
 
 ## Exploratory Data Analysis 
