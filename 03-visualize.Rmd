@@ -1,0 +1,60 @@
+---
+title: "Visualize Democratic Candidate data"
+author: "Jane Doe"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+# create image folder ----
+if (!file.exists("figs/")) {
+    dir.create("figs/")
+}
+# create data folder ----
+if (!file.exists("data/")) {
+    dir.create("data/")
+}
+knitr::opts_chunk$set(
+    echo = TRUE, # show all code
+    eval = TRUE,
+    message = FALSE, 
+    comment = "#> ",
+    warning = TRUE,
+    tidy = FALSE, # cleaner code printing
+    size = "small",
+    fig.path = "figs/") # smaller code
+knitr::opts_knit$set(
+    width = 78)
+base::options(tibble.print_max = 25,
+              tibble.width = 78)
+```
+
+
+# Motivation
+
+This document visualizes the democratic candidate data from the first night of debates. 
+
+## Import data 
+
+```{r import, eval=TRUE, message=FALSE, warning=FALSE}
+source("code/01-import.R")
+```
+
+
+## Wrangle data
+
+See the script for more details.
+
+```{r wrangle, eval=TRUE, message=FALSE, warning=FALSE}
+source("code/02-wrangle.R")
+```
+
+Start with visualizing as much of the data as possible. These two graphs tell us 1) "what kind of variables are in the data set?" and 2) "how much are missing?"
+
+```{r visdat-inspectdf}
+library(visdat)
+library(inspectdf)
+inspectdf::inspect_types(Dems2020Debate01IOTAirTime) %>% 
+  inspectdf::show_plot()
+visdat::vis_miss(Dems2020Debate01IOTAirTime) + 
+  ggplot2::coord_flip()
+```

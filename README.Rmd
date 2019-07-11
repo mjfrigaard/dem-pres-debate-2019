@@ -1,6 +1,6 @@
 ---
-title: "2019 Democratic Debate Google trend data"
-author: "John Doe"
+title: "2019 Democratic Debates data project"
+author: "Jane Doe"
 output: github_document
 ---
 
@@ -31,10 +31,18 @@ library(rtweet)
 
 # Motivation
 
-We've been asked to see if there is a relationship between screen time and Google trend searches for candidates in the Democratic presidential debate. This document outlines the data import, wrangling, and visulizations used to complete this project. 
+We've want see how popular each democratic candidate did after the first round of [2019 Democratic Presidential Debates](https://en.wikipedia.org/wiki/2020_Democratic_Party_presidential_debates_and_forums), but we missed all the coverage.
+
+We happened to read an article from the data journalism website [`fivethirtyeight`](https://projects.fivethirtyeight.com/democratic-debate-poll/), and it displayed an image showing how voters had changed their minds after seeing the candidates. 
+
+```{r 03-538-night-one-debates.png, echo=FALSE}
+knitr::include_graphics("figs/03-538-night-one-debates.png")
+```
+
+This document outlines the data import, wrangling, and visulizations used in this project. 
 
 ```{r project-files}
-fs::dir_tree("data", recurse = TRUE)    
+fs::dir_tree(".", recurse = FALSE)    
 ```
 
 
@@ -83,36 +91,6 @@ We are interested in collecting data from June 25, 2019 until June 27, 2019 to g
 ### Google search terms 
 
 Each candidates name was searched for with "2020". We thought it would be a good idea to add "2020" to the candidates name to make it easier to identify searches that corresponded to the interested with the upcoming election. 
-
-We can pass the following search items through the `gtrendsR::gtrends()` function below to download the data into our RStudio environment. The first night of the Democratic presidential debate was June 26, 2019, but the code below will collected data for the last 30 days  
-
-```{r gtrendsR-dont-run, eval=FALSE}
-# get group 1 from debate
-# Dems2020Night1Group1 <- 
-gtrendsR::gtrends(keyword = c("Bill de Blasio 2020",
-                                               "Cory Booker 2020",
-                                               "Julián Castro 2020",
-                                               "John Delaney 2020",
-                                               "Jay Inslee 2020"), 
-                                    # enter dates
-                                    time = "today 1-m",
-                                    gprop = "web",
-                                    geo = c("US"))
-
-
-
-# get group 2 from debate
-# Dems2020Night1Group2 <- 
-gtrendsR::gtrends(keyword = c("Amy Klobuchar 2020",
-                                                "Tulsi Gabbard 2020",
-                                                "Beto O’Rourke 2020",
-                                                "Tim Ryan 2020",
-                                                "Elizabeth Warren 2020"), 
-                                                # enter dates
-                                      time = "today 1-m",
-                                      gprop = "web",
-                                      geo = c("US"))
-```
 
 ## Twitter data 
 
@@ -198,29 +176,10 @@ Dems2020IOTAirTime7day %>%
   facet_wrap(~ keyword, ncol = 2)
 ```
 
-Now we can see Booker is definitely ahead of Warren in terms of hits over time, but what about in terms of `airtime`?
+Now we can see Booker is definitely ahead of Warren in terms of hits over time.
 
-
-
-```{r middle-candidates}
+```{r google-middle-percent-candidates}
 Dems2020IOTAirTime7day %>% 
-  dplyr::filter(prior_vperc_fct == "0.5 - 0.9% of voters") %>% 
-  ggplot(aes(x = date, 
-             y = hits, 
-             color = keyword)) +
-  geom_line(aes(group = keyword), show.legend = FALSE) + 
-  ggplot2::labs(
-    x = "Date",
-    y = "Google search hits",
-    subtitle = "Google search hits for Candidates with > 1.0% of voters") + 
-  ggthemes::theme_fivethirtyeight(base_size = 7.5) +
-  facet_wrap(~ keyword, ncol = 2)
-```
-
-
-
-```{r}
-Dems2020Debate01IOT7day %>% 
   dplyr::filter(prior_vperc_fct == "0.5 - 0.9% of voters") %>% 
   ggplot(aes(x = date, 
              y = hits, 
@@ -240,8 +199,8 @@ Dems2020Debate01IOT7day %>%
 
 
 
-```{r low-candidates, message=FALSE, warning=FALSE}
-Dems2020Debate01IOT7day %>% 
+```{r google-low-candidates, message=FALSE, warning=FALSE}
+Dems2020IOTAirTime7day %>% 
   dplyr::filter(prior_vperc_fct == "0.2 - 0.4% of voters") %>% 
   ggplot(aes(x = date, 
              y = hits, 
@@ -265,8 +224,8 @@ This looks like Gabbard had a better night than the other three candidates in he
 
 This is the middle group of candidates who would need to grab one of the top-ranking spots. 
 
-```{r bottom-candidate}
-Dems2020Debate01IOT %>%  
+```{r google-bottom-percent-candidate}
+Dems2020IOTAirTime7day %>%  
   dplyr::filter(prior_vperc_fct == "0.2% of voters") %>% 
   ggplot(aes(x = date, 
              y = hits, 
@@ -292,7 +251,7 @@ For coming in with the lowest polling percentage (based on voting that day), Joh
 We can also check the `gender` categorical variable to see how the candidates break down across `Men` and `Women`
 
 ```{r Dems2020Debate01IOT-date-hits-women}
-Dems2020Debate01IOT %>% 
+Dems2020IOTAirTime7day %>% 
   dplyr::filter(gender == "Women") %>% 
   ggplot(aes(x = date, 
              y = hits, 
@@ -313,7 +272,7 @@ Dems2020Debate01IOT %>%
 This shows Gubbard outperforming Warren in Google searches. And the `Men`...
 
 ```{r Dems2020Debate01IOT-date-hits-men}
-Dems2020Debate01IOT %>% 
+Dems2020IOTAirTime7day %>% 
   dplyr::filter(gender == "Men") %>% 
   ggplot(aes(x = date, 
              y = hits, 

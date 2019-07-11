@@ -1,67 +1,52 @@
-2019 Democratic Debate Google trend data
+2019 Democratic Debates data project
 ================
-John Doe
-
-**Rmarkdown:**
-
-This is an R Markdown format used for publishing markdown documents.
-When you click the **Knit** button all R code chunks are run and a
-markdown file (`.md`) suitable for publishing to GitHub is generated.
-
-**Including Code:**
-
-You can include R code in the document to keep track of your work\!
-Below we perform a search for Democratic presidential candidates during
-the debates in June of 2019.
+Jane Doe
 
 # Motivation
 
-This document collects Google trend data for the 10 democratic
-presidential candidates who spoke on the first night of the Democratic
-presidential debate held in Miami, Florida, on June 26, 2019.
+We’ve want see how popular each democratic candidate did after the first
+round of [2019 Democratic Presidential
+Debates](https://en.wikipedia.org/wiki/2020_Democratic_Party_presidential_debates_and_forums),
+but we missed all the coverage.
 
-We will be collecting data from June 25, 2019 until June 27, 2019 to get
-a gauge of how well (or how bad) each candidate did in terms of gaining
-interest (as measured by Google search trends).
+We happened to read an article from the data journalism website
+[`fivethirtyeight`](https://projects.fivethirtyeight.com/democratic-debate-poll/),
+and it displayed an image showing how voters had changed their minds
+after seeing the candidates.
 
-## Packages
+![](figs/03-538-night-one-debates.png)<!-- -->
 
-The Google search trends are accessible via the
-[gtrendsR](https://github.com/PMassicotte/gtrendsR) package. This and
-other packages are in the `00-packages.R` script. We load these packages
-in the code chunk below.
+This document outlines the data import, wrangling, and visulizations
+used in this project.
 
 ``` r
-fs::dir_tree(".", recurse = FALSE)
+fs::dir_tree(".", recurse = FALSE)    
 ```
 
     ## .
     ## ├── 01-import.Rmd
     ## ├── 02-wrangle.Rmd
+    ## ├── 03-visualize.Rmd
     ## ├── README.Rmd
     ## ├── README.md
+    ## ├── code
     ## ├── data
-    ## ├── figs
-    ## ├── google-trends-data.Rproj
-    ## └── src
+    ## ├── dem-pres-debate-2019.Rproj
+    ## └── figs
+
+## Data sources
+
+These data come from two sources, Wikipedia and Google trends. We will
+start be collecting the data from Wikipedia on the debate.
 
 ``` r
-library(gtrendsR)
-library(maps)
-library(ggplot2)
-library(lettercase)
-library(viridis)
-library(pals)
-library(scico)
-library(ggrepel)
-library(tidyverse)
-library(skimr)
+source("code/01-import.R")
 ```
 
-## The candidates
+## The democratic candidates
 
-There were ten candidates in the debates, all are listed alphabetically
-below.
+There were ten candidates in the first night of debates, and all are
+listed alphabetically below.
 
 ``` r
 dem_candidates <- c("Amy Klobuchar",
@@ -88,12 +73,57 @@ writeLines(dem_candidates)
     ## Tim Ryan
     ## Tulsi Gabbard
 
-We can pass the following search items through the `gtrendsR::gtrends()`
-function below to download the data into our RStudio environment.
+### The Wikipedia table
 
-The first night of the Democratic presidential debate was held in Miami,
-Florida, on June 26, 2019, so we’ve included the day before (June 25th)
-and the day of the debate.
+[Wikipedia page on 2020 democratic debates (first
+night)](https://en.wikipedia.org/wiki/2020_Democratic_Party_presidential_debates_and_forums#Summary).
+
+The data, `WikiDemAirTime01Raw` are in the work session below.
+
+``` r
+WikiDemAirTime01Raw %>% head(10)
+```
+
+    ## # A tibble: 10 x 2
+    ##    X1                X2                
+    ##    <chr>             <chr>             
+    ##  1 Night one airtime Night one airtime 
+    ##  2 Candidate         Airtime (min.)[57]
+    ##  3 Booker            10.9              
+    ##  4 O'Rourke          10.3              
+    ##  5 Warren            9.3               
+    ##  6 Castro            8.8               
+    ##  7 Klobuchar         8.5               
+    ##  8 Ryan              7.7               
+    ##  9 Gabbard           6.6               
+    ## 10 Delaney           6.6
+
+``` r
+WikiDemAirTime02Raw %>% head(10)
+```
+
+    ## # A tibble: 10 x 2
+    ##    X1                X2                
+    ##    <chr>             <chr>             
+    ##  1 Night two airtime Night two airtime 
+    ##  2 Candidate         Airtime (min.)[57]
+    ##  3 Biden             13.6              
+    ##  4 Harris            11.9              
+    ##  5 Sanders           11.0              
+    ##  6 Buttigieg         10.5              
+    ##  7 Bennet            8.1               
+    ##  8 Gillibrand        7.5               
+    ##  9 Hickenlooper      5.2               
+    ## 10 Williamson        5.0
+
+### Google trends data
+
+We are interested in collecting data from June 25, 2019 until June 27,
+2019 to get a gauge of how well (or how bad) each candidate did in terms
+of gaining interest (as measured by Google search trends). The Google
+search trends are accessible via the
+[gtrendsR](https://github.com/PMassicotte/gtrendsR) package. This and
+other packages are in the `00-packages.R` script.
 
 ### Google search terms
 
@@ -102,58 +132,45 @@ be a good idea to add “2020” to the candidates name to make it easier to
 identify searches that corresponded to the interested with the upcoming
 election.
 
-### Import data
+## Twitter data
 
-See the script for more details.
+The twitter data for the first night of candidates are below. These data
+were collected \~1 week after the debates.
 
 ``` r
-source("src/01-import.R")
+TwitterData %>%
+  ts_plot("3 hours") +
+  ggplot2::theme_minimal() +
+  ggplot2::theme(plot.title = ggplot2::element_text(face = "bold")) 
 ```
 
-    ## Parsed with column specification:
-    ## cols(
-    ##   Poll = col_character(),
-    ##   Date = col_character(),
-    ##   Biden = col_double(),
-    ##   Sanders = col_double(),
-    ##   Warren = col_double(),
-    ##   Harris = col_double(),
-    ##   Buttigieg = col_double(),
-    ##   ORourke = col_double(),
-    ##   Booker = col_double(),
-    ##   Yang = col_double(),
-    ##   Klobuchar = col_double(),
-    ##   Gabbard = col_double(),
-    ##   Castro = col_double(),
-    ##   Ryan = col_double(),
-    ##   Bullock = col_double(),
-    ##   Gillibrand = col_double(),
-    ##   Spread = col_character()
-    ## )
+![](figs/ts_plot-1.png)<!-- -->
 
-### Wrangle data
+## Wrangle data
 
 See the script for more details.
 
 ``` r
-source("src/02-wrangle.R")
+source("code/02-wrangle.R")
 ```
 
 ## Exploratory Data Analysis
 
-Start with visualizing as much of the data as possible.
+Start with visualizing as much of the data as possible. These two graphs
+tell us 1) “what kind of variables are in the data set?” and 2) “how
+much are missing?”
 
 ``` r
 library(visdat)
 library(inspectdf)
-inspectdf::inspect_types(Dems2020Debate01IOT) %>% 
+inspectdf::inspect_types(Dems2020Debate01IOTAirTime) %>% 
   inspectdf::show_plot()
 ```
 
 ![](figs/visdat-inspectdf-1.png)<!-- -->
 
 ``` r
-visdat::vis_miss(Dems2020Debate01IOT) + 
+visdat::vis_miss(Dems2020Debate01IOTAirTime) + 
   ggplot2::coord_flip()
 ```
 
@@ -161,11 +178,21 @@ visdat::vis_miss(Dems2020Debate01IOT) +
 
 ### Candidates with high % going into debates
 
-If we look at the candidates with the highest percent of likely voters
+[fivethirtyeight](https://projects.fivethirtyeight.com/democratic-debate-poll/)
+did a pre-debate survey with MorningConsult and asked who voters were
+most likely to vote for before each debate, then asked them who they
+would vote for *after the debate*, this .
+
+> *To track which candidates are winning over voters, we asked
+> respondents who they would vote for before and after each debate. That
+> lets us measure not only who gained (or lost) support, but also where
+> that support came from (or went to).*
+
+When we look at the candidates with the highest percent of likely voters
 on the 26th, we see the following:
 
 ``` r
-Dems2020Debate01IOT %>% 
+Dems2020Debate01IOTAirTime %>% 
   dplyr::filter(prior_vperc_fct == "> 1.0% of voters") %>% 
   ggplot(aes(x = date, 
              y = hits, 
@@ -175,21 +202,50 @@ Dems2020Debate01IOT %>%
     x = "Date",
     y = "Google search hits",
     caption = paste0("Google search hits between ", 
-                   min(Dems2020Debate01IOT$date),
+                   min(Dems2020Debate01IOTAirTime$date),
                    " and ",
-                   max(Dems2020Debate01IOT$date)),
+                   max(Dems2020Debate01IOTAirTime$date)),
     subtitle = "Google search hits for Candidates with > 1.0% of voters") + 
-  ggthemes::theme_fivethirtyeight(base_size = 7.5) +
+  ggthemes::theme_fivethirtyeight(base_size = 9) +
   facet_wrap(~ keyword, ncol = 2)
 ```
 
 ![](figs/top-3-candidates-1.png)<!-- -->
 
 This shows Booker doing well, Warren getting some searches later in the
-evening, etc.
+evening, etc. But we should narrow this down to the 7 day we’re
+interested in (23rd - 29th) and store it in `Dems2020IOTAirTime7day`.
 
 ``` r
-Dems2020Debate01IOT %>% 
+Dems2020IOTAirTime7day <- Dems2020Debate01IOTAirTime %>% 
+                                   dplyr::filter(date >= "2019-06-22" & 
+                                                 date < "2019-06-30")
+```
+
+If we narrow this down to the week of the debates, we see the following:
+
+``` r
+Dems2020IOTAirTime7day %>% 
+  dplyr::filter(prior_vperc_fct == "> 1.0% of voters") %>% 
+  ggplot(aes(x = date, 
+             y = hits, 
+             color = keyword)) +
+  geom_line(aes(group = keyword), show.legend = FALSE) + 
+  ggplot2::labs(
+    x = "Date",
+    y = "Google search hits",
+    subtitle = "Google search hits for Candidates with > 1.0% of voters") + 
+  ggthemes::theme_fivethirtyeight(base_size = 8) +
+  facet_wrap(~ keyword, ncol = 2)
+```
+
+![](figs/7-day-top-3-1.png)<!-- -->
+
+Now we can see Booker is definitely ahead of Warren in terms of hits
+over time.
+
+``` r
+Dems2020IOTAirTime7day %>% 
   dplyr::filter(prior_vperc_fct == "0.5 - 0.9% of voters") %>% 
   ggplot(aes(x = date, 
              y = hits, 
@@ -207,12 +263,10 @@ Dems2020Debate01IOT %>%
   facet_wrap(~ keyword, ncol = 2)
 ```
 
-    ## Warning: Removed 2 rows containing missing values (geom_path).
-
-![](figs/middle-candidates-1.png)<!-- -->
+![](figs/google-middle-percent-candidates-1.png)<!-- -->
 
 ``` r
-Dems2020Debate01IOT %>% 
+Dems2020IOTAirTime7day %>% 
   dplyr::filter(prior_vperc_fct == "0.2 - 0.4% of voters") %>% 
   ggplot(aes(x = date, 
              y = hits, 
@@ -230,7 +284,7 @@ Dems2020Debate01IOT %>%
   facet_wrap(~ keyword, ncol = 3)
 ```
 
-![](figs/low-candidates-1.png)<!-- -->
+![](figs/google-low-candidates-1.png)<!-- -->
 
 This looks like Gabbard had a better night than the other three
 candidates in her group.
@@ -241,7 +295,7 @@ This is the middle group of candidates who would need to grab one of the
 top-ranking spots.
 
 ``` r
-Dems2020Debate01IOT %>%  
+Dems2020IOTAirTime7day %>%  
   dplyr::filter(prior_vperc_fct == "0.2% of voters") %>% 
   ggplot(aes(x = date, 
              y = hits, 
@@ -259,9 +313,7 @@ Dems2020Debate01IOT %>%
   facet_wrap(~ keyword, ncol = 3)
 ```
 
-    ## Warning: Removed 7 rows containing missing values (geom_path).
-
-![](figs/bottom-candidate-1.png)<!-- -->
+![](figs/google-bottom-percent-candidate-1.png)<!-- -->
 
 For coming in with the lowest polling percentage (based on voting that
 day), John Delaney ended up with a moderate boost in Google searches.
@@ -272,7 +324,7 @@ We can also check the `gender` categorical variable to see how the
 candidates break down across `Men` and `Women`
 
 ``` r
-Dems2020Debate01IOT %>% 
+Dems2020IOTAirTime7day %>% 
   dplyr::filter(gender == "Women") %>% 
   ggplot(aes(x = date, 
              y = hits, 
@@ -290,15 +342,13 @@ Dems2020Debate01IOT %>%
   facet_wrap(. ~ keyword)
 ```
 
-    ## Warning: Removed 1 rows containing missing values (geom_path).
-
 ![](figs/Dems2020Debate01IOT-date-hits-women-1.png)<!-- -->
 
 This shows Gubbard outperforming Warren in Google searches. And the
 `Men`…
 
 ``` r
-Dems2020Debate01IOT %>% 
+Dems2020IOTAirTime7day %>% 
   dplyr::filter(gender == "Men") %>% 
   ggplot(aes(x = date, 
              y = hits, 
@@ -315,8 +365,6 @@ Dems2020Debate01IOT %>%
   ggthemes::theme_fivethirtyeight(base_size = 7.5) + 
   facet_wrap(. ~ keyword, ncol = 3)
 ```
-
-    ## Warning: Removed 9 rows containing missing values (geom_path).
 
 ![](figs/Dems2020Debate01IOT-date-hits-men-1.png)<!-- -->
 
@@ -345,7 +393,7 @@ Dems2020InterestByRegion %>%
     ## # A tibble: 5 x 6
     ##   variable n      mean      sd        median   hist    
     ##   <chr>    <chr>  <chr>     <chr>     <chr>    <chr>   
-    ## 1 hits     155370 "  23.18" "  14.84" 19       ▆▇▃▁▁▁▁▁
+    ## 1 hits     155370 "  17.4 " "  19.5 " 11       ▇▂▁▁▁▁▁▁
     ## 2 order    155370 7798.15   4503.19   7794     ▇▇▇▇▇▇▇▇
     ## 3 group    155370 " 30.15"  18.13     " 26   " ▅▇▇▆▃▃▇▃
     ## 4 lat      155370 " 38.18"  " 5.79"   " 38.18" ▂▅▅▆▇▆▆▃

@@ -1,5 +1,5 @@
 ---
-title: "Wrangle Google trend data"
+title: "Wrangle Democratic Candidate data"
 author: "John Doe"
 output: github_document
 ---
