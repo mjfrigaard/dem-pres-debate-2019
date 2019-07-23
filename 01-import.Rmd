@@ -294,12 +294,14 @@ Dems2020Debate01IOT %>%
 
 ### Priors: Calculate the % of likely Democratic voters 
 
-We'll split the Men into three groups based on the [article updated on JUN. 26, 2019, AT 5:53 PM by fivethirtyeight](https://projects.fivethirtyeight.com/democratic-debate-poll/), "Who likely Democratic voters would vote for if the election were held today."
+We'll split the men into three groups based on the [article updated on JUN. 26, 2019, AT 5:53 PM by fivethirtyeight](https://projects.fivethirtyeight.com/democratic-debate-poll/), "Who likely Democratic voters would vote for if the election were held today."
 
 These data are stored in 
 
-```{r Cand538Fav}
-Cand538Fav %>% count(candidate, before)
+```{r Cand538Fav, eval=TRUE}
+Cand538Fav %>% 
+  dplyr::count(candidate, before) %>% 
+  dplyr::arrange(desc(before))
 ```
 
 
