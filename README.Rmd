@@ -69,7 +69,7 @@ dem_candidates <- c("Amy Klobuchar",
                 "Julián Castro",
                 "Tim Ryan",
                 "Tulsi Gabbard")
-writeLines(dem_candidates)
+base::writeLines(dem_candidates)
 ```
 
 ### The Wikipedia table
@@ -100,7 +100,8 @@ The twitter data for the first night of candidates are below. These data were co
 TwitterData %>%
   ts_plot("3 hours") +
   ggplot2::theme_minimal() +
-  ggplot2::theme(plot.title = ggplot2::element_text(face = "bold")) 
+  ggplot2::theme(plot.title = 
+                   ggplot2::element_text(face = "bold")) 
 ```
 
 ## Wrangle data
@@ -210,7 +211,7 @@ Dems2020IOTAirTime7day %>%
     x = "Date",
     y = "Google search hits",
     subtitle = "Google search hits for candidates with between 0.2 - 0.4% of voters",
-    caption = paste0("0.2 - 0.4% of voters",
+    caption = paste0("0.2 - 0.4% of voters ",
                      min(Dems2020Debate01IOT$date),
                    " and ",
                    max(Dems2020Debate01IOT$date))) + 

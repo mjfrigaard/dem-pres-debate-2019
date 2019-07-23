@@ -1,5 +1,5 @@
 ---
-title: "Wrangle Democratic Candidate data"
+title: "Wrangle Democratic Candidate 2019 Data"
 author: "John Doe"
 output: github_document
 ---

@@ -1,5 +1,5 @@
 ---
-title: "Import Democratic Candidate data"
+title: "Import Democratic Candidate 2019 Data"
 author: "Jane Doe"
 output: github_document
 ---

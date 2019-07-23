@@ -1,5 +1,5 @@
 ---
-title: "Visualize Democratic Candidate data"
+title: "Visualize Democratic Candidate 2019 Data"
 author: "Jane Doe"
 output: github_document
 ---
