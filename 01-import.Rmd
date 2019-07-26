@@ -40,6 +40,23 @@ You can include R code in the document to keep track of your work! Below we perf
 
 This document describes how various data sources were downloaded for this project. The first night of the Democratic presidential debate held in Miami, Florida, on June 26, 2019.
 
+## Packages
+
+The packages are installed in the `00-packages.R` script. We'll load the packages in the code chunk below. 
+
+```{r 00-packages.R, eval=TRUE}
+library(gtrendsR)
+library(maps)
+library(ggplot2)
+library(lettercase)
+library(viridis)
+library(pals)
+library(scico)
+library(ggrepel)
+library(tidyverse)
+library(skimr)
+```
+
 ## The data 
 
 - Google trend data from the [`gtrendsR`](https://github.com/PMassicotte/gtrendsR) package for R gives us access to Google search terms and trends. We're going to use this to import data on Google searches for the candidates before and after the night of the debates. 
@@ -100,48 +117,30 @@ Night01TweetsUsers <- rtweet::users_data(Night01Tweets)
 # Night01Tweets %>% glimpse(78)
 ```
 
-3) There are data from voters on how they felt about each candidate going into the debates stored in a Google Sheet [here](http://bit.ly/2YEVASu) that we've accessed using the [`googlesheets`](https://cran.r-project.org/web/packages/googlesheets/vignettes/basic-usage.html) package in R (*you will need to copy this sheet into your Google drive to get this data set*). Another option is to use the [`datapasta`](https://cran.r-project.org/web/packages/datapasta/README.html) package and copy + paste these data into R. 
+3) There are data from voters on how they felt about each candidate going into the debates stored in a Google Sheet [here](http://bit.ly/2YEVASu) that we've accessed using the [`googlesheets4`](https://googlesheets4.tidyverse.org/) package in R (*you will need to copy this sheet into your Google drive to get this data set*). Another option is to use the [`datapasta`](https://cran.r-project.org/web/packages/datapasta/README.html) package and copy + paste these data into R. 
 
 4) There is a [Wikipedia](https://en.wikipedia.org/wiki/2020_Democratic_Party_presidential_debates_and_forums) page dedicated to the debates. We will be extracting the tables with airtime for candidate using the [`xml2`](https://cran.r-project.org/web/packages/xml2/index.html) and [`rvest`](https://rvest.tidyverse.org/) packages. 
 
 ```{r wiki-dont-run, eval=FALSE}
 # import wikipedia url ----------------------------------------------------
-dem2020_url <- "https://en.wikipedia.org/wiki/2020_Democratic_Party_presidential_debates_and_forums"
-dem2020_tables <- dem2020_url %>%
-  xml2::read_html() %>%
-  rvest::html_nodes("table")
-dem2020_tables %>% length()
+wiki_data_path <- "data/raw/wikipedia/"   # path to the data
+wiki_data_files <- dir(wiki_data_path, 
+                          pattern = "*.csv") # get file names
+WikiData <- wiki_data_files %>%
+  # read in all the files, appending the path before the filename
+  purrr::map(~ readr::read_csv(file.path(wiki_data_path, .)))
 
-# export wiki data --------------------------------------------------------
-# export table from night 1
-WikiDemAirTime01Raw <- rvest::html_table(x = dem2020_tables[[7]], 
-                                  fill = TRUE)
-# export table from night 2
-WikiDemAirTime02Raw <- rvest::html_table(x = dem2020_tables[[8]],
-                                  fill = TRUE)
-```
-
-
-## Packages
-
-The Google search trends are accessible via the [gtrendsR](https://github.com/PMassicotte/gtrendsR) package. This and other packages are in the `00-packages.R` script. We load these packages in the code chunk below. 
-
-```{r 00-packages.R, eval=TRUE}
-library(gtrendsR)
-library(maps)
-library(ggplot2)
-library(lettercase)
-library(viridis)
-library(pals)
-library(scico)
-library(ggrepel)
-library(tidyverse)
-library(skimr)
+WikiDemAirTime01Raw <- WikiData[[1]]
+# WikiDemAirTime01Raw
+WikiDemAirTime02Raw <- WikiData[[2]]
+# WikiDemAirTime02Raw
+PollingCriterionRaw <- WikiData[[3]]
+# PollingCriterionRaw
 ```
 
 ## The candidates 
 
-There were ten candidates in the first night of the debates, and ten in the second night. We have created a table with all of them listed alphabetically below.
+There were ten candidates in the first night of the debates, and ten in the second night. We have created a vector with all of them listed alphabetically below.
 
 ```{r dem_cand_2020}
 dem_candidates <- c("Amy Klobuchar",

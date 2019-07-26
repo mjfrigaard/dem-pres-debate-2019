@@ -33,6 +33,10 @@ WikiDemAirTime02Raw <- rvest::html_table(x = dem2020_tables[[8]],
 # WikiDemAirTime01Raw %>% glimpse(78)
 # WikiDemAirTime02Raw %>% glimpse(78)
 
+PollingCriterion <- rvest::html_table(x = dem2020_tables[[6]], 
+                                  fill = TRUE)
+
+# PollingCriterion %>% glimpse(78)
 
 # create raw/wikipedia data folder --------
 if (!file.exists("data/raw/wikipedia/")) {
@@ -46,10 +50,19 @@ readr::write_csv(as.data.frame(WikiDemAirTime01Raw), path =
                      base::noquote(lubridate::today()),
                      "-WikiDemAirTime01Raw.csv"
                    ))
+
 # export night 2 -------------------------------------------------------------
 readr::write_csv(as.data.frame(WikiDemAirTime02Raw), path = 
                    paste0(
                      "data/raw/wikipedia/",
                      base::noquote(lubridate::today()),
                      "-WikiDemAirTime02Raw.csv"
+                   ))
+
+# export Polling criterion ----------------------------------------------------
+readr::write_csv(as.data.frame(PollingCriterion), path = 
+                   paste0(
+                     "data/raw/wikipedia/",
+                     base::noquote(lubridate::today()),
+                     "-PollingCriterionRaw.csv"
                    ))

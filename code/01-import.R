@@ -32,13 +32,13 @@ google_data_files <- dir(google_data_path,
 GoogleData <- google_data_files %>%
   # read in all the files, appending the path before the filename
   purrr::map(~ readr::read_rds(file.path(google_data_path, .)))
-Dems2020Night1Group1 <- GoogleData[[1]]
-Dems2020Night1Group2 <- GoogleData[[2]]
+GTrendDems2020Night1G1 <- GoogleData[[1]]
+GTrendDems2020Night1G2 <- GoogleData[[2]]
 
 
 # import 538 --------------------------------------------------------------
 # fs::dir_ls("data/raw/538/")
-Cand538Fav <- readr::read_csv("data/raw/538/2019-07-06-Cand538Fav.csv")
+GSheetCand538Fav <- readr::read_csv("data/raw/538/2019-07-06-Cand538Fav.csv")
 
 
 # import wikipedia --------------------------------------------------------
@@ -48,11 +48,12 @@ wiki_data_files <- dir(wiki_data_path,
 WikiData <- wiki_data_files %>%
   # read in all the files, appending the path before the filename
   purrr::map(~ readr::read_csv(file.path(wiki_data_path, .)))
-
 WikiDemAirTime01Raw <- WikiData[[1]]
 # WikiDemAirTime01Raw
 WikiDemAirTime02Raw <- WikiData[[2]]
 # WikiDemAirTime02Raw
+WikiPollCriterionRaw <- WikiData[[3]]
+# WikiPollCriterionRaw
 
 # import twitter data -----------------------------------------------------
 # these have been imported using the 01.2-twitter-data.R file. Open it for more 
