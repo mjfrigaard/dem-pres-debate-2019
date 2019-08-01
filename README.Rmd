@@ -16,15 +16,15 @@ if (!file.exists("data/")) {
 knitr::opts_chunk$set(
     echo = TRUE, # show all code
     tidy = FALSE, # cleaner code printing
-    size = "small",
-    fig.path = "figs/") # smaller code
+    size = "small", # smaller code
+    fig.path = "figs/") 
 knitr::opts_knit$set(
     width = 78)
 base::options(tibble.print_max = 25,
               tibble.width = 78)
 ```
 
-```{r packages}
+```{r packages, warning=FALSE, message=FALSE}
 library(tidyverse)
 library(Hmisc)
 library(janitor)
@@ -34,3 +34,17 @@ library(visdat)
 library(inspectdf)
 library(bbplot)
 ```
+
+# Motivation
+
+We read an interesting article on fivethirtyeight about the democratic debates in June of 2019. In particular, the image below that displays how voters had changed their minds after watching the candidates. 
+
+## Import data 
+
+The code chunk below imports the raw data.
+
+```{r import-data}
+# where are the data?
+fs::dir_tree("data/raw")
+```
+
