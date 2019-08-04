@@ -32,7 +32,6 @@ library(magrittr)
 library(rtweet)
 library(visdat)
 library(inspectdf)
-library(bbplot)
 ```
 
 # Motivation
