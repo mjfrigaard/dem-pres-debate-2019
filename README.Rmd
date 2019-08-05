@@ -34,16 +34,5 @@ library(visdat)
 library(inspectdf)
 ```
 
-# Motivation
 
-We read an interesting article on fivethirtyeight about the democratic debates in June of 2019. In particular, the image below that displays how voters had changed their minds after watching the candidates. 
-
-## Import data 
-
-The code chunk below imports the raw data.
-
-```{r import-data}
-# where are the data?
-fs::dir_tree("data/raw")
-```
 
